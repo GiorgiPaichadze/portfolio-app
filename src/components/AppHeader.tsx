@@ -9,6 +9,9 @@ const AppHeader = () => {
         <div className="h-full flex items-center justify-between">
           <h1 className="text-2xl font-bold text-slate-200">
             <Link href="/">Giorgi Paichadze</Link>
+            {/* <Link href="/" className="flex w-20 h-20">
+              <AppLogo />
+            </Link> */}
           </h1>
           <AppNavigation />
         </div>
