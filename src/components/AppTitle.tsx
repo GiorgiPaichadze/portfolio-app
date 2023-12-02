@@ -1,5 +1,5 @@
 type AppTitleProps = {
-  children: String;
+  children: string;
 };
 
 const AppTitle = ({ children }: AppTitleProps) => {

@@ -115,3 +115,26 @@ export const skillsData = {
     },
   ],
 };
+
+export const artmediaSkillsData = [
+  {
+    id: 0,
+    title: 'NextJS',
+  },
+  {
+    id: 1,
+    title: 'ReactJS',
+  },
+  {
+    id: 2,
+    title: 'JavaScript',
+  },
+  {
+    id: 3,
+    title: 'HTML',
+  },
+  {
+    id: 4,
+    title: 'CSS (SCSS) Modules',
+  },
+];
