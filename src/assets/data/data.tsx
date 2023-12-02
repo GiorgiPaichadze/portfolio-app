@@ -116,25 +116,122 @@ export const skillsData = {
   ],
 };
 
-export const artmediaSkillsData = [
+export const experienceData = [
   {
     id: 0,
-    title: 'NextJS',
+    image: '/artmedia.svg',
+    name: 'Artmedia',
+    url: 'http://artmedia.ge/',
+    location: 'Tbilisi',
+    position: 'Frontend Developer',
+    date: 'November 2021 - Present',
+    desc: `Developed scalable and responsive web applications, collaborating closely with designers
+    and back-end developers to implement UI designs and integrate front-end code with
+    server-side logic. Worked in an Agile environment, participating in daily stand-ups and
+    sprint planning sessions. Conducted regular maintenance and updates to existing
+    websites.`,
+    stack: [
+      {
+        id: 0,
+        title: 'NextJS',
+      },
+      {
+        id: 1,
+        title: 'ReactJS',
+      },
+      {
+        id: 2,
+        title: 'JavaScript',
+      },
+      {
+        id: 3,
+        title: 'HTML',
+      },
+      {
+        id: 4,
+        title: 'CSS (SCSS) Modules',
+      },
+    ],
   },
   {
     id: 1,
-    title: 'ReactJS',
+    image: '/artmedia.svg',
+    name: 'Artmedia',
+    url: 'http://artmedia.ge/',
+    location: 'Tbilisi',
+    position: 'Frontend Developer',
+    date: 'November 2021 - Present',
+    desc: `Developed scalable and responsive web applications, collaborating closely with designers
+    and back-end developers to implement UI designs and integrate front-end code with
+    server-side logic. Worked in an Agile environment, participating in daily stand-ups and
+    sprint planning sessions. Conducted regular maintenance and updates to existing
+    websites.`,
+    stack: [
+      {
+        id: 0,
+        title: 'NextJS',
+      },
+      {
+        id: 1,
+        title: 'ReactJS',
+      },
+      {
+        id: 2,
+        title: 'JavaScript',
+      },
+      {
+        id: 3,
+        title: 'HTML',
+      },
+      {
+        id: 4,
+        title: 'CSS (SCSS) Modules',
+      },
+    ],
+  },
+];
+
+export const projectsData = [
+  {
+    id: 0,
+    image: '/project.png',
+    name: 'actio.ge',
+    url: 'https://actio.ge/',
+    desc: 'The First Impact Fund in Georgia Actio',
+    stack: [
+      {
+        id: 0,
+        title: 'JavaScript',
+      },
+      {
+        id: 1,
+        title: 'HTML',
+      },
+      {
+        id: 2,
+        title: 'SCSS',
+      },
+    ],
   },
   {
-    id: 2,
-    title: 'JavaScript',
-  },
-  {
-    id: 3,
-    title: 'HTML',
-  },
-  {
-    id: 4,
-    title: 'CSS (SCSS) Modules',
+    id: 1,
+    image: '/project.png',
+    name: 'actio.ge',
+    url: 'https://actio.ge/',
+    desc: 'The First Impact Fund in Georgia Actio',
+    stack: [
+      {
+        id: 0,
+        title: 'JavaScript',
+      },
+      {
+        id: 1,
+        title: 'HTML',
+      },
+      {
+        id: 2,
+        title: 'SCSS',
+      },
+    ],
   },
 ];

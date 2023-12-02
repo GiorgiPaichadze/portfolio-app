@@ -2,6 +2,7 @@ import AppContainer from '@/components/AppContainer';
 import ExperienceCard from '@/components/ExperienceCard';
 import experience from '@/assets/data/experience.json';
 import LottieAnimation from '@/components/LottieAnimation';
+import { experienceData } from '@/assets/data/data';
 
 const Experience = () => {
   return (
@@ -12,8 +13,10 @@ const Experience = () => {
             <div className="flex-1 hidden md:block">
               <LottieAnimation item={experience} />
             </div>
-            <div className="flex-1 flex flex-col gap-1 pl-6 md:pl-0">
-              <ExperienceCard />
+            <div className="flex-1 flex flex-col gap-8">
+              {experienceData.map((item) => (
+                <ExperienceCard key={item.id} item={item} />
+              ))}
             </div>
           </div>
         </div>
