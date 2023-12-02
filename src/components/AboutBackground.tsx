@@ -1,10 +1,13 @@
 'use client';
 
 import Lottie from 'lottie-react';
-import mountains from '@/assets/data/mountains.json';
 
-const AboutBackground = () => {
-  return <Lottie animationData={mountains} loop={true} />;
+type LottieAnimationProps = {
+  item: any;
 };
 
-export default AboutBackground;
+const LottieBackground = ({ item }: LottieAnimationProps) => {
+  return <Lottie animationData={item} loop={true} />;
+};
+
+export default LottieBackground;

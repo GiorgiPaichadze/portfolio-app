@@ -29,11 +29,11 @@ const Projects = () => {
                         alt=""
                         width={120}
                         height={120}
-                        className="rounded-md"
+                        className="rounded-md min-w-[120px]"
                       />
                     </div>
                     <div className="flex flex-col gap-3">
-                      <h4 className="text-lg text-teal-300">{item.name}</h4>
+                      <h4 className="text-lg text-teal-300">{item.title}</h4>
                       <div className="text-sm">{item.desc}</div>
                       <ul className="flex gap-2 flex-wrap">
                         {item.stack.map((item) => (

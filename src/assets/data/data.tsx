@@ -195,7 +195,7 @@ export const projectsData = [
   {
     id: 0,
     image: '/project.png',
-    name: 'actio.ge',
+    title: 'actio.ge',
     url: 'https://actio.ge/',
     desc: 'The First Impact Fund in Georgia Actio',
     stack: [
@@ -216,7 +216,7 @@ export const projectsData = [
   {
     id: 1,
     image: '/project.png',
-    name: 'actio.ge',
+    title: 'actio.ge',
     url: 'https://actio.ge/',
     desc: 'The First Impact Fund in Georgia Actio',
     stack: [
@@ -235,3 +235,46 @@ export const projectsData = [
     ],
   },
 ];
+
+export const blogData = [
+  {
+    id: 0,
+    image: '/project.png',
+    title: 'SEO Writing: 12 Tips for Creating SEO-Optimized Content',
+    url: '/seo',
+    text: `SEO writing is the process of writing content in a way that’s intended to make it rank higher in search engines like Google for relevant keywords. 
+    This involves: 
+    Optimizing your content for target keywords 
+    Making sure your content is helpful to readers
+    Helping search engines understand what your content is about
+    This guide teaches you why SEO writing matters and how to hone your SEO writing skills in 12 easy pointers. Read on.
+    `,
+  },
+  {
+    id: 1,
+    image: '/project.png',
+    title: 'SEO Writing: 12 Tips for Creating SEO-Optimized Content',
+    url: '/seo',
+    text: `SEO writing is the process of writing content in a way that’s intended to make it rank higher in search engines like Google for relevant keywords. 
+    This involves: 
+    Optimizing your content for target keywords 
+    Making sure your content is helpful to readers
+    Helping search engines understand what your content is about
+    This guide teaches you why SEO writing matters and how to hone your SEO writing skills in 12 easy pointers. Read on.
+    `,
+  },
+];
+
+export const articleData = {
+  id: 0,
+  image: '/project.png',
+  title: 'SEO Writing: 12 Tips for Creating SEO-Optimized Content',
+  url: '/seo',
+  text: `SEO writing is the process of writing content in a way that’s intended to make it rank higher in search engines like Google for relevant keywords. 
+  This involves: 
+  Optimizing your content for target keywords 
+  Making sure your content is helpful to readers
+  Helping search engines understand what your content is about
+  This guide teaches you why SEO writing matters and how to hone your SEO writing skills in 12 easy pointers. Read on.
+  `,
+};

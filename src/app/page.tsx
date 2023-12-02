@@ -1,16 +1,17 @@
 import Link from 'next/link';
-import AboutBackground from '@/components/AboutBackground';
 import AppContainer from '@/components/AppContainer';
 import AppSocials from '@/components/AppSocials';
 import AppSubtitle from '@/components/AppSubtitle';
 import AppTitle from '@/components/AppTitle';
 import HighlightedTitle from '@/components/HighlightedTitle';
+import LottieBackground from '@/components/AboutBackground';
+import mountains from '@/assets/data/mountains.json';
 
 export default function About() {
   return (
     <main className="h-[calc(100vh-6rem)] relative">
       <div className="absolute -z-10 bottom-0 left-0 right-0 hidden md:block">
-        <AboutBackground />
+        <LottieBackground item={mountains} />
       </div>
       <AppContainer>
         <div className="h-full md:w-7/12 pt-12 md:pt-24 flex flex-col gap-5">
