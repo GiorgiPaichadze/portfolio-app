@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import MobileMenu from './MobileMenu';
 import { menuData } from '@/assets/data/data';
+import AppMobileMenu from './AppMobileMenu';
 
-const AppNavigation = () => {
+const AppNavigation: React.FC = () => {
   const pathname = usePathname();
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
 
@@ -39,7 +39,7 @@ const AppNavigation = () => {
           </svg>
         </button>
         {activeMobileMenu && (
-          <MobileMenu menuData={menuData} setActiveMobileMenu={setActiveMobileMenu} />
+          <AppMobileMenu menuData={menuData} setActiveMobileMenu={setActiveMobileMenu} />
         )}
       </div>
     </nav>

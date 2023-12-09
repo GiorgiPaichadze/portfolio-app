@@ -1,8 +1,6 @@
-type AppSubtitleProps = {
+const AppSubtitle: React.FC<{
   children: string;
-};
-
-const AppSubtitle = ({ children }: AppSubtitleProps) => {
+}> = ({ children }) => {
   return <p className="text-slate-300 text-lg">{children}</p>;
 };
 

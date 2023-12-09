@@ -1,21 +1,16 @@
 'use client';
 
+import { ContactFormProps } from '@/types/types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-type Inputs = {
-  name: string;
-  email: string;
-  text: string;
-};
-
-const ContactForm = () => {
+const AppContactForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<ContactFormProps>();
+
+  const onSubmit: SubmitHandler<ContactFormProps> = (data) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 items-start">
@@ -67,4 +62,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default AppContactForm;

@@ -1,10 +1,10 @@
-import { menuDataProps } from '@/types/types';
+import { MenuProps } from '@/types/types';
 import AppContainer from './AppContainer';
 import Link from 'next/link';
 import { Dispatch, SetStateAction } from 'react';
 
-const MobileMenu: React.FC<{
-  menuData: menuDataProps;
+const AppMobileMenu: React.FC<{
+  menuData: MenuProps[];
   setActiveMobileMenu: Dispatch<SetStateAction<boolean>>;
 }> = ({ menuData, setActiveMobileMenu }) => {
   return (
@@ -27,4 +27,4 @@ const MobileMenu: React.FC<{
   );
 };
 
-export default MobileMenu;
+export default AppMobileMenu;

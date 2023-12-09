@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useState, CSSProperties } from 'react';
+import { useEffect, useState, CSSProperties } from 'react';
 
-const LightCursor = () => {
+const LightCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

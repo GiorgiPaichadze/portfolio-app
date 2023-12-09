@@ -1,15 +1,16 @@
 import AppContainer from '@/components/AppContainer';
-import SignInForm from '@/components/SignInForm';
+import AppSectionRow from '@/components/AppSectionRow';
+import AppSignInForm from '@/components/AppSignInForm';
 
-const SignIn = () => {
+const SignIn: React.FC = () => {
   return (
-    <div className="py-20 md:py-24">
+    <AppSectionRow>
       <AppContainer>
         <div className="max-w-[468px] mx-auto">
-          <SignInForm />
+          <AppSignInForm />
         </div>
       </AppContainer>
-    </div>
+    </AppSectionRow>
   );
 };
 

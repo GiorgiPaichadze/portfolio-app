@@ -1,10 +1,14 @@
+import { aboutData } from '@/assets/data/data';
 import Link from 'next/link';
 
-const AppSocials = () => {
+const AppSocials: React.FC = () => {
   return (
     <ul className="flex gap-4">
       <li className="w-6 h-6">
-        <Link href="/" className="text-slate-300 hover:text-teal-300 transition-colors">
+        <Link
+          href={aboutData.linkedIn}
+          target="_black"
+          className="text-slate-300 hover:text-teal-300 transition-colors">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -19,7 +23,10 @@ const AppSocials = () => {
         </Link>
       </li>
       <li className="w-6 h-6">
-        <Link href="/" className="text-slate-300 hover:text-teal-300 transition-colors">
+        <Link
+          href={aboutData.github}
+          target="_black"
+          className="text-slate-300 hover:text-teal-300 transition-colors">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

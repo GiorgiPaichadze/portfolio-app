@@ -12,10 +12,6 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-#header {
-  background: rgb(var(--background-rgb));
-}
-
 ::selection {
   background-color: #5eead4;
   color: rgb(var(--background-rgb));

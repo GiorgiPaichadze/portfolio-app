@@ -1,11 +1,13 @@
-import LottieBackground from '@/components/AboutBackground';
-import notFound from '@/assets/data/not-found.json';
+import notFound from '@/assets/data/lottiefiles/not-found.json';
+import Link from 'next/link';
+import LottieAnimationBackground from '@/components/LottieAnimationBackground';
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
-    <div className="h-[calc(100vh-6rem)] flex items-center justify-center">
+    <div className="h-[calc(100vh-6rem)] flex flex-col items-center justify-center">
+      <Link href={'/'}>Back</Link>
       <div className="w-[600px] h-[500px] hidden md:block">
-        <LottieBackground item={notFound} />
+        <LottieAnimationBackground item={notFound} />
       </div>
     </div>
   );

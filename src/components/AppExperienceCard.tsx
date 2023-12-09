@@ -1,10 +1,10 @@
 import { ExperienceCardProps } from '@/types/types';
-import HighlightedTitle from './HighlightedTitle';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
+import AppHighlightedTitle from './AppHighlightedTitle';
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
+const AppExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
   return (
     <Link
       href={item.url}
@@ -14,7 +14,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
         <Image src={item?.image} alt="" width={24} height={24} />
       </div>
       <div>
-        <HighlightedTitle>{item.name}</HighlightedTitle>
+        <AppHighlightedTitle>{item.name}</AppHighlightedTitle>
         <p className="text-sm">{item.location}</p>
         <div className="mt-4 flex flex-col gap-2">
           <p>{item.position}</p>
@@ -35,4 +35,4 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
   );
 };
 
-export default ExperienceCard;
+export default AppExperienceCard;

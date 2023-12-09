@@ -4,23 +4,20 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import AppContainer from '@/components/AppContainer';
+import { ArticleFormProps } from '@/types/types';
+import AppSectionRow from '@/components/AppSectionRow';
 
-type Inputs = {
-  title: string;
-  text: string;
-};
-
-const AddArticle = () => {
+const AddArticle: React.FC = () => {
   const router = useRouter();
   const admin = true;
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<ArticleFormProps>();
+
+  const onSubmit: SubmitHandler<ArticleFormProps> = (data) => console.log(data);
 
   useEffect(() => {
     if (!admin) {
@@ -29,7 +26,7 @@ const AddArticle = () => {
   });
 
   return (
-    <div className="py-20 md:py-24">
+    <AppSectionRow>
       <AppContainer>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 items-start ">
           <div className="w-full flex flex-col gap-4">
@@ -58,7 +55,7 @@ const AddArticle = () => {
           </div>
         </form>
       </AppContainer>
-    </div>
+    </AppSectionRow>
   );
 };
 

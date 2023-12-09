@@ -2,14 +2,17 @@
 
 import { articleData } from '@/assets/data/data';
 import AppContainer from '@/components/AppContainer';
+import AppSectionRow from '@/components/AppSectionRow';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 
-const BlogInside = () => {
+const BlogInside: React.FC = () => {
   const params = useParams();
+
   console.log(params.slug);
+
   return (
-    <div className="py-20 md:py-24">
+    <AppSectionRow>
       <AppContainer>
         <figure className="relative h-[400px]">
           <Image src={articleData.image} alt="" fill />
@@ -19,7 +22,7 @@ const BlogInside = () => {
           <p className="text-lg">{articleData.text}</p>
         </div>
       </AppContainer>
-    </div>
+    </AppSectionRow>
   );
 };
 

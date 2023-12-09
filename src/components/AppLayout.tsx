@@ -1,18 +1,13 @@
-import { ReactNode } from 'react';
 import AppHeader from './AppHeader';
 import LightCursor from './LightCursor';
 
-type AppContainerProps = {
-  children: ReactNode;
-};
-
-const AppLayout = ({ children }: AppContainerProps) => {
+const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div>
+    <>
       <LightCursor />
       <AppHeader />
-      {children}
-    </div>
+      <main>{children}</main>
+    </>
   );
 };
 

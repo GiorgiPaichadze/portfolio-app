@@ -1,12 +1,13 @@
 import AppContainer from '@/components/AppContainer';
-import ExperienceCard from '@/components/ExperienceCard';
-import experience from '@/assets/data/experience.json';
+import experience from '@/assets/data/lottiefiles/experience.json';
 import LottieAnimation from '@/components/LottieAnimation';
 import { experienceData } from '@/assets/data/data';
+import AppExperienceCard from '@/components/AppExperienceCard';
+import AppSectionRow from '@/components/AppSectionRow';
 
-const Experience = () => {
+const Experience: React.FC = () => {
   return (
-    <div className="py-20 md:py-24">
+    <AppSectionRow>
       <AppContainer>
         <div className="flex flex-col gap-16">
           <div className="flex">
@@ -15,13 +16,13 @@ const Experience = () => {
             </div>
             <div className="flex-1 flex flex-col gap-8">
               {experienceData.map((item) => (
-                <ExperienceCard key={item.id} item={item} />
+                <AppExperienceCard key={item.id} item={item} />
               ))}
             </div>
           </div>
         </div>
       </AppContainer>
-    </div>
+    </AppSectionRow>
   );
 };
 

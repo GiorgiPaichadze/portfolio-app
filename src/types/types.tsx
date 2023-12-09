@@ -1,10 +1,10 @@
-export type menuDataProps = {
+export interface MenuProps {
   id: number;
   title: string;
   url: string;
-}[];
+}
 
-export type ExperienceCardProps = {
+export interface ExperienceCardProps {
   item: {
     id: number;
     image: string;
@@ -19,4 +19,35 @@ export type ExperienceCardProps = {
       title: string;
     }[];
   };
-};
+}
+
+export interface ArticleFormProps {
+  title: string;
+  text: string;
+}
+
+export interface AboutFormProps {
+  highlightedTitle: string;
+  title: string;
+  subtitle: string;
+  cv: string;
+  contactSlug: string;
+  linkedIn: string;
+  github: string;
+}
+
+export interface ContactFormProps {
+  name: string;
+  email: string;
+  text: string;
+}
+
+export interface HighlightedTitleProps {
+  children: string;
+  nowrap?: boolean;
+}
+
+export interface SignInProps {
+  email: string;
+  password: string;
+}

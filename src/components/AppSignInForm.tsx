@@ -1,20 +1,16 @@
 'use client';
 
+import { SignInProps } from '@/types/types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-type Inputs = {
-  email: string;
-  password: string;
-};
-
-const SignInForm = () => {
+const AppSignInForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<SignInProps>();
+
+  const onSubmit: SubmitHandler<SignInProps> = (data) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 items-start ">
@@ -46,4 +42,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default AppSignInForm;

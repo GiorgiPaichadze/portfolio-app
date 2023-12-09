@@ -2,11 +2,9 @@
 
 import Lottie from 'lottie-react';
 
-type LottieAnimationProps = {
-  item: any;
-};
-
-const LottieAnimation = ({ item }: LottieAnimationProps) => {
+const LottieAnimation: React.FC<{
+  item: { v: string };
+}> = ({ item }) => {
   return <Lottie className="w-3/4" animationData={item} loop={true} />;
 };
 

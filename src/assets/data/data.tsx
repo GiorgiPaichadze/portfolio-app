@@ -31,6 +31,46 @@ export const menuData = [
   },
 ];
 
+export const drawerData = [
+  {
+    id: 0,
+    title: 'about',
+    url: '/manage/about',
+  },
+  {
+    id: 1,
+    title: 'skills',
+    url: '/manage/skills',
+  },
+  {
+    id: 2,
+    title: 'experience',
+    url: '/manage/experience',
+  },
+  {
+    id: 3,
+    title: 'projects',
+    url: '/manage/projects',
+  },
+  {
+    id: 5,
+    title: 'blog',
+    url: '/manage/blog',
+  },
+];
+
+export const aboutData = {
+  highlightedTitle: ' Welcome to the digital realm where creativity meets functionality!',
+  title: 'Giorgi Paichadze',
+  subtitle: `Frontend focused Web Developer specializing in building exceptional digital experiences.
+  Join me on a journey through pixels and code as we explore the art of user interfaces
+  and bring web designs to life.`,
+  cv: 'dummy.pdf',
+  contactSlug: '/contact',
+  linkedIn: 'https://www.linkedin.com/',
+  github: 'https://github.com/',
+};
+
 export const skillsData = {
   frontend: [
     {
@@ -59,7 +99,7 @@ export const skillsData = {
     },
     {
       id: 6,
-      skills: 'Tailwind, Material UI',
+      skills: 'Tailwind',
     },
     {
       id: 7,
@@ -153,68 +193,11 @@ export const experienceData = [
       },
     ],
   },
-  {
-    id: 1,
-    image: '/artmedia.svg',
-    name: 'Artmedia',
-    url: 'http://artmedia.ge/',
-    location: 'Tbilisi',
-    position: 'Frontend Developer',
-    date: 'November 2021 - Present',
-    desc: `Developed scalable and responsive web applications, collaborating closely with designers
-    and back-end developers to implement UI designs and integrate front-end code with
-    server-side logic. Worked in an Agile environment, participating in daily stand-ups and
-    sprint planning sessions. Conducted regular maintenance and updates to existing
-    websites.`,
-    stack: [
-      {
-        id: 0,
-        title: 'NextJS',
-      },
-      {
-        id: 1,
-        title: 'ReactJS',
-      },
-      {
-        id: 2,
-        title: 'JavaScript',
-      },
-      {
-        id: 3,
-        title: 'HTML',
-      },
-      {
-        id: 4,
-        title: 'CSS (SCSS) Modules',
-      },
-    ],
-  },
 ];
 
 export const projectsData = [
   {
     id: 0,
-    image: '/project.png',
-    title: 'actio.ge',
-    url: 'https://actio.ge/',
-    desc: 'The First Impact Fund in Georgia Actio',
-    stack: [
-      {
-        id: 0,
-        title: 'JavaScript',
-      },
-      {
-        id: 1,
-        title: 'HTML',
-      },
-      {
-        id: 2,
-        title: 'SCSS',
-      },
-    ],
-  },
-  {
-    id: 1,
     image: '/project.png',
     title: 'actio.ge',
     url: 'https://actio.ge/',

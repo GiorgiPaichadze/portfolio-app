@@ -3,30 +3,26 @@ import AppContainer from '@/components/AppContainer';
 import AppSocials from '@/components/AppSocials';
 import AppSubtitle from '@/components/AppSubtitle';
 import AppTitle from '@/components/AppTitle';
-import HighlightedTitle from '@/components/HighlightedTitle';
-import LottieBackground from '@/components/AboutBackground';
-import mountains from '@/assets/data/mountains.json';
+import mountains from '@/assets/data/lottiefiles/mountains.json';
+import { aboutData } from '@/assets/data/data';
+import LottieAnimationBackground from '@/components/LottieAnimationBackground';
+import AppHighlightedTitle from '@/components/AppHighlightedTitle';
 
-export default function About() {
+const About: React.FC = () => {
   return (
-    <main className="h-[calc(100vh-6rem)] relative">
+    <div className="h-[calc(100vh-6rem)] relative">
       <div className="absolute -z-10 bottom-0 left-0 right-0 hidden md:block">
-        <LottieBackground item={mountains} />
+        <LottieAnimationBackground item={mountains} />
       </div>
       <AppContainer>
         <div className="h-full md:w-7/12 pt-12 md:pt-24 flex flex-col gap-5">
-          <HighlightedTitle>
-            Welcome to the digital realm where creativity meets functionality!
-          </HighlightedTitle>
-          <AppTitle>Giorgi Paichadze</AppTitle>
-          <AppSubtitle>
-            Frontend focused Web Developer specializing in building exceptional digital experiences.
-            Join me on a journey through pixels and code as we explore the art of user interfaces
-            and bring web designs to life.
-          </AppSubtitle>
+          <AppHighlightedTitle>{aboutData.highlightedTitle}</AppHighlightedTitle>
+          <AppTitle>{aboutData.title}</AppTitle>
+          <AppSubtitle>{aboutData.subtitle}</AppSubtitle>
           <div className="flex gap-2">
             <Link
-              href="/"
+              href={aboutData.cv}
+              target="_blank"
               className="px-4 py-2 bg-blue-950 text-teal-300 text-sm rounded-lg flex gap-2 items-center justify-center hover:text-teal-400 transition-colors">
               <span>View CV</span>
               <div className="w-4 h-4">
@@ -44,7 +40,7 @@ export default function About() {
               </div>
             </Link>
             <Link
-              href="contact"
+              href={aboutData.contactSlug}
               className="px-4 py-2 bg-blue-950 text-teal-300 text-sm rounded-lg flex gap-2 items-center justify-center hover:text-teal-400 transition-colors">
               <span>Contact me</span>
               <div className="w-4 h-4">
@@ -64,6 +60,8 @@ export default function About() {
           <AppSocials />
         </div>
       </AppContainer>
-    </main>
+    </div>
   );
-}
+};
+
+export default About;

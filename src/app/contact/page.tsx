@@ -1,11 +1,12 @@
-import contact from '@/assets/data/contact.json';
+import contact from '@/assets/data/lottiefiles/contact.json';
 import AppContainer from '@/components/AppContainer';
-import ContactForm from '@/components/ContactForm';
 import LottieAnimation from '@/components/LottieAnimation';
+import AppContactForm from '@/components/AppContactForm';
+import AppSectionRow from '@/components/AppSectionRow';
 
-const Contact = () => {
+const Contact: React.FC = () => {
   return (
-    <div className="py-20 md:py-24">
+    <AppSectionRow>
       <AppContainer>
         <div className="flex flex-col gap-16">
           <div className="flex">
@@ -13,12 +14,12 @@ const Contact = () => {
               <LottieAnimation item={contact} />
             </div>
             <div className="flex-1 flex flex-col gap-8">
-              <ContactForm />
+              <AppContactForm />
             </div>
           </div>
         </div>
       </AppContainer>
-    </div>
+    </AppSectionRow>
   );
 };
 

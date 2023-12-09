@@ -1,13 +1,14 @@
 import AppContainer from '@/components/AppContainer';
 import LottieAnimation from '@/components/LottieAnimation';
-import projects from '@/assets/data/projects.json';
+import projects from '@/assets/data/lottiefiles/projects.json';
 import Image from 'next/image';
 import { projectsData } from '@/assets/data/data';
 import Link from 'next/link';
+import AppSectionRow from '@/components/AppSectionRow';
 
-const Projects = () => {
+const Projects: React.FC = () => {
   return (
-    <div className="py-20 md:py-24">
+    <AppSectionRow>
       <AppContainer>
         <div className="flex flex-col gap-16">
           <div className="flex">
@@ -52,7 +53,7 @@ const Projects = () => {
           </div>
         </div>
       </AppContainer>
-    </div>
+    </AppSectionRow>
   );
 };
 
