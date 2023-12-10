@@ -10,7 +10,7 @@ import AppHighlightedTitle from '@/components/AppHighlightedTitle';
 
 const About: React.FC = () => {
   return (
-    <div className="h-[calc(100vh-6rem)] relative">
+    <main className="h-[calc(100vh-6rem)] relative">
       <div className="absolute -z-10 bottom-0 left-0 right-0 hidden md:block">
         <LottieAnimationBackground item={mountains} />
       </div>
@@ -60,7 +60,7 @@ const About: React.FC = () => {
           <AppSocials />
         </div>
       </AppContainer>
-    </div>
+    </main>
   );
 };
 

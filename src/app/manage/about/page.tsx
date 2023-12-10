@@ -2,17 +2,35 @@
 
 import AppContainer from '@/components/AppContainer';
 import AppSectionRow from '@/components/AppSectionRow';
+import { http } from '@/services/http';
 import { AboutFormProps } from '@/types/types';
+import { aboutFormSchema } from '@/validations/validations';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 const ManageAbout: React.FC = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AboutFormProps>();
+  } = useForm<AboutFormProps>({
+    resolver: zodResolver(aboutFormSchema),
+  });
 
-  const onSubmit: SubmitHandler<AboutFormProps> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<AboutFormProps> = async (data) => {
+    try {
+      // await http('/api/about', {
+      //   method: 'POST',
+      //   body: JSON.stringify(data),
+      // });
+
+      await http('/api/about', 'POST', data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <AppSectionRow>
@@ -22,69 +40,69 @@ const ManageAbout: React.FC = () => {
             <div className="w-full flex flex-col gap-4">
               <input
                 placeholder="highlightedTitle"
-                {...register('highlightedTitle', { required: true })}
+                {...register('highlightedTitle')}
                 className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
               />
               {errors.highlightedTitle && (
-                <span className="text-red-500 capitalize">highlightedTitle field is required</span>
+                <span className="text-red-500 capitalize">{errors.highlightedTitle.message}</span>
               )}
             </div>
             <div className="w-full flex flex-col gap-4">
               <input
                 placeholder="title"
-                {...register('title', { required: true })}
+                {...register('title')}
                 className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
               />
               {errors.title && (
-                <span className="text-red-500 capitalize">title field is required</span>
+                <span className="text-red-500 capitalize">{errors.title.message}</span>
               )}
             </div>
             <div className="w-full flex flex-col gap-4">
               <textarea
                 placeholder="subtitle"
-                {...register('subtitle', { required: true })}
+                {...register('subtitle')}
                 className="w-full px-4 py-2 h-36 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize resize-none"
               />
               {errors.subtitle && (
-                <span className="text-red-500 capitalize">subtitle field is required</span>
+                <span className="text-red-500 capitalize">{errors.subtitle.message}</span>
               )}
             </div>
             <div className="w-full flex flex-col gap-4">
               <input
                 placeholder="cv"
-                {...register('cv', { required: true })}
+                {...register('cv')}
                 className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
               />
-              {errors.cv && <span className="text-red-500 capitalize">cv field is required</span>}
+              {errors.cv && <span className="text-red-500 capitalize">{errors.cv.message}</span>}
             </div>
             <div className="w-full flex flex-col gap-4">
               <input
                 placeholder="contactSlug"
-                {...register('contactSlug', { required: true })}
+                {...register('contactSlug')}
                 className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
               />
               {errors.contactSlug && (
-                <span className="text-red-500 capitalize">contactSlug field is required</span>
+                <span className="text-red-500 capitalize">{errors.contactSlug.message}</span>
               )}
             </div>
             <div className="w-full flex flex-col gap-4">
               <input
                 placeholder="linkedIn"
-                {...register('linkedIn', { required: true })}
+                {...register('linkedIn')}
                 className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
               />
               {errors.linkedIn && (
-                <span className="text-red-500 capitalize">linkedIn field is required</span>
+                <span className="text-red-500 capitalize">{errors.linkedIn.message}</span>
               )}
             </div>
             <div className="w-full flex flex-col gap-4">
               <input
                 placeholder="github"
-                {...register('github', { required: true })}
+                {...register('github')}
                 className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
               />
               {errors.github && (
-                <span className="text-red-500 capitalize">github field is required</span>
+                <span className="text-red-500 capitalize">{errors.github.message}</span>
               )}
             </div>
             <button

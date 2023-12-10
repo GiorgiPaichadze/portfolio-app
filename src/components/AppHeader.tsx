@@ -2,9 +2,10 @@ import Link from 'next/link';
 import AppContainer from './AppContainer';
 import AppNavigation from './AppNavigation';
 import AppAvatar from './AppAvatar';
+import { getAuthSession } from '@/utils/auth';
 
-const AppHeader: React.FC = () => {
-  const admin = true;
+const AppHeader: React.FC = async () => {
+  const session = await getAuthSession();
 
   return (
     <header className="sticky top-0 py-6 h-24 z-50 bg-[#0F172A]" id="header">
@@ -14,7 +15,7 @@ const AppHeader: React.FC = () => {
             <Link href="/">Giorgi Paichadze</Link>
           </h1>
           <AppNavigation />
-          {admin && <AppAvatar />}
+          {session && <AppAvatar />}
         </div>
       </AppContainer>
     </header>

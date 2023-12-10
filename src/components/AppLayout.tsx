@@ -6,7 +6,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       <LightCursor />
       <AppHeader />
-      <main>{children}</main>
+      <div>{children}</div>
     </>
   );
 };

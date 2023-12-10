@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import Link from 'next/link';
 import { drawerData } from '@/assets/data/data';
+import { signOut } from 'next-auth/react';
 
 const AppAvatar: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -66,6 +67,7 @@ const AppAvatar: React.FC = () => {
                   </Link>
                 </li>
               ))}
+              <button onClick={() => signOut()}>Sign Out</button>
             </ul>
           </div>
         </div>
