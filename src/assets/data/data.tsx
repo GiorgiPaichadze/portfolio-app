@@ -59,18 +59,6 @@ export const drawerData = [
   },
 ];
 
-export const aboutData = {
-  highlightedTitle: ' Welcome to the digital realm where creativity meets functionality!',
-  title: 'Giorgi Paichadze',
-  subtitle: `Frontend focused Web Developer specializing in building exceptional digital experiences.
-  Join me on a journey through pixels and code as we explore the art of user interfaces
-  and bring web designs to life.`,
-  cv: 'dummy.pdf',
-  contactSlug: '/contact',
-  linkedIn: 'https://www.linkedin.com/',
-  github: 'https://github.com/',
-};
-
 export const skillsData = {
   frontend: [
     {

@@ -6,31 +6,49 @@ import { http } from '@/services/http';
 import { AboutFormProps } from '@/types/types';
 import { aboutFormSchema } from '@/validations/validations';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 const ManageAbout: React.FC = () => {
-  const router = useRouter();
+  const [aboutData, setAboutData] = useState<AboutFormProps | {}>({});
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<AboutFormProps>({
     resolver: zodResolver(aboutFormSchema),
+    defaultValues: aboutData || {},
   });
+
+  const getData = async () => {
+    try {
+      const data = await http('/api/about', 'GET');
+      setAboutData(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   const onSubmit: SubmitHandler<AboutFormProps> = async (data) => {
     try {
-      // await http('/api/about', {
-      //   method: 'POST',
-      //   body: JSON.stringify(data),
-      // });
-
       await http('/api/about', 'POST', data);
-    } catch (err) {
-      console.log(err);
+      await getData();
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    if (aboutData) {
+      reset(aboutData);
+    }
+  }, [aboutData, reset]);
 
   return (
     <AppSectionRow>
