@@ -21,11 +21,11 @@ const AppExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
           <p className="text-sm">{item.date}</p>
           <p className="text-sm text-slate-400">{item.desc}</p>
           <ul className="flex gap-2 flex-wrap">
-            {item.stack.map((item) => (
+            {item.stack.split(',').map((item, index) => (
               <li
-                key={item.id}
+                key={index}
                 className="text-xs py-1 px-2 whitespace-nowrap bg-blue-950 text-teal-300 rounded">
-                {item.title}
+                {item}
               </li>
             ))}
           </ul>

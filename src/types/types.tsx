@@ -4,6 +4,22 @@ export interface MenuProps {
   url: string;
 }
 
+export interface AboutFormProps {
+  highlightedTitle: string;
+  title: string;
+  subtitle: string;
+  cv: string;
+  contactSlug: string;
+  linkedIn: string;
+  github: string;
+}
+
+export interface SkillListProps {
+  id: string;
+  skills: string;
+  skillListId: string;
+}
+
 export interface ExperienceCardProps {
   item: {
     id: number;
@@ -14,26 +30,13 @@ export interface ExperienceCardProps {
     date: string;
     desc: string;
     url: string;
-    stack: {
-      id: number;
-      title: string;
-    }[];
+    stack: string;
   };
 }
 
 export interface ArticleFormProps {
   title: string;
   text: string;
-}
-
-export interface AboutFormProps {
-  highlightedTitle: string;
-  title: string;
-  subtitle: string;
-  cv: string;
-  contactSlug: string;
-  linkedIn: string;
-  github: string;
 }
 
 export interface ContactFormProps {

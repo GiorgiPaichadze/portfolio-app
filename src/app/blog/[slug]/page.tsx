@@ -9,8 +9,6 @@ import { useParams } from 'next/navigation';
 const BlogInside: React.FC = () => {
   const params = useParams();
 
-  console.log(params.slug);
-
   return (
     <AppSectionRow>
       <AppContainer>

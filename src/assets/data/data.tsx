@@ -158,28 +158,7 @@ export const experienceData = [
     server-side logic. Worked in an Agile environment, participating in daily stand-ups and
     sprint planning sessions. Conducted regular maintenance and updates to existing
     websites.`,
-    stack: [
-      {
-        id: 0,
-        title: 'NextJS',
-      },
-      {
-        id: 1,
-        title: 'ReactJS',
-      },
-      {
-        id: 2,
-        title: 'JavaScript',
-      },
-      {
-        id: 3,
-        title: 'HTML',
-      },
-      {
-        id: 4,
-        title: 'CSS (SCSS) Modules',
-      },
-    ],
+    stack: 'ReactJS, NextJS',
   },
 ];
 

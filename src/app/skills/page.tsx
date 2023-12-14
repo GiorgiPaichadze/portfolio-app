@@ -1,4 +1,3 @@
-import { skillsData } from '@/assets/data/data';
 import AppContainer from '@/components/AppContainer';
 import LottieAnimation from '@/components/LottieAnimation';
 import frontend from '@/assets/data/lottiefiles/frontend.json';
@@ -6,8 +5,22 @@ import backend from '@/assets/data/lottiefiles/backend.json';
 import other from '@/assets/data/lottiefiles/other.json';
 import AppHighlightedTitle from '@/components/AppHighlightedTitle';
 import AppSectionRow from '@/components/AppSectionRow';
+import { http } from '@/services/http';
 
-const Skills: React.FC = () => {
+const getData = async () => {
+  try {
+    const data = await http('/api/skills', 'GET');
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+const Skills: React.FC = async () => {
+  const skillsData = await getData();
+
+  if (!skillsData) return null;
+
   return (
     <AppSectionRow>
       <AppContainer>
@@ -20,7 +33,7 @@ const Skills: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <AppHighlightedTitle>Frontend:</AppHighlightedTitle>
                 <ul className="pl-6 flex flex-col gap-3">
-                  {skillsData?.frontend.map((item) => (
+                  {skillsData?.frontend.map((item: any) => (
                     <li
                       className="relative before:content-[''] before:w-4 before:h-[2px] before:bg-teal-300 before:absolute before:-left-8 before:top-2/4"
                       key={item.id}>
@@ -39,7 +52,7 @@ const Skills: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <AppHighlightedTitle>Backend:</AppHighlightedTitle>
                 <ul className="pl-6 flex flex-col gap-3">
-                  {skillsData?.backend.map((item) => (
+                  {skillsData?.backend.map((item: any) => (
                     <li
                       className="relative before:content-[''] before:w-4 before:h-[2px] before:bg-teal-300 before:absolute before:-left-8 before:top-2/4"
                       key={item.id}>
@@ -58,7 +71,7 @@ const Skills: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <AppHighlightedTitle nowrap>Other skills</AppHighlightedTitle>
                 <ul className="pl-6 flex flex-col gap-3">
-                  {skillsData?.other.map((item) => (
+                  {skillsData?.other.map((item: any) => (
                     <li
                       className="relative before:content-[''] before:w-4 before:h-[2px] before:bg-teal-300 before:absolute before:-left-8 before:top-2/4"
                       key={item.id}>

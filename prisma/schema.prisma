@@ -37,3 +37,43 @@ model About {
   linkedIn         String
   github           String
 }
+
+model SkillList {
+  id       String              @id @default(auto()) @map("_id") @db.ObjectId
+  frontend SkillItemFrontend[]
+  backend  SkillItemBackend[]
+  other    SkillItemOther[]
+}
+
+model SkillItemFrontend {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  skills      String
+  SkillList   SkillList? @relation(fields: [skillListId], references: [id])
+  skillListId String?    @db.ObjectId
+}
+
+model SkillItemBackend {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  skills      String
+  SkillList   SkillList? @relation(fields: [skillListId], references: [id])
+  skillListId String?    @db.ObjectId
+}
+
+model SkillItemOther {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  skills      String
+  SkillList   SkillList? @relation(fields: [skillListId], references: [id])
+  skillListId String?    @db.ObjectId
+}
+
+model Experience {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  image    String
+  name     String
+  url      String
+  location String
+  position String
+  date     String
+  desc     String
+  stack    String
+}
