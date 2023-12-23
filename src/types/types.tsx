@@ -9,39 +9,55 @@ export interface AboutFormProps {
   title: string;
   subtitle: string;
   cv: string;
-  contactSlug: string;
   linkedIn: string;
   github: string;
+  email: string;
 }
 
-export interface SkillListProps {
+export interface SkillItem {
   id: string;
   skills: string;
   skillListId: string;
 }
 
-export interface ExperienceCardProps {
-  item: {
-    id: number;
-    image: string;
-    name: string;
-    location: string;
-    position: string;
-    date: string;
-    desc: string;
-    url: string;
-    stack: string;
-  };
-}
-
-export interface ArticleFormProps {
-  title: string;
-  text: string;
-}
-
-export interface ContactFormProps {
+export interface ExperienceFormProps {
+  id: string;
+  image: string;
   name: string;
-  email: string;
+  location: string;
+  position: string;
+  date: string;
+  desc: string;
+  url: string;
+  stack: string;
+}
+
+export interface ExperienceItem {
+  id: string;
+  image: string;
+  name: string;
+  url: string;
+  location: string;
+  position: string;
+  date: string;
+  desc: string;
+  stack: string;
+}
+
+export interface ProjectsItem {
+  id: string;
+  image: string;
+  title: string;
+  url: string;
+  desc: string;
+  stack: string;
+}
+
+export interface PostFormProps {
+  id?: string;
+  slug?: string;
+  image: string;
+  title: string;
   text: string;
 }
 
@@ -59,5 +75,6 @@ export interface SocialProps {
   socials: {
     linkedIn: string;
     github: string;
+    email: string;
   };
 }

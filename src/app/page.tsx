@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import AppContainer from '@/components/AppContainer';
 import AppSocials from '@/components/AppSocials';
 import AppSubtitle from '@/components/AppSubtitle';
@@ -7,6 +6,7 @@ import mountains from '@/assets/data/lottiefiles/mountains.json';
 import LottieAnimationBackground from '@/components/LottieAnimationBackground';
 import AppHighlightedTitle from '@/components/AppHighlightedTitle';
 import { http } from '@/services/http';
+import AppLinkButton from '@/components/AppLinkButton';
 
 const getData = async () => {
   try {
@@ -32,12 +32,9 @@ const About: React.FC = async () => {
           <AppHighlightedTitle>{aboutData.highlightedTitle}</AppHighlightedTitle>
           <AppTitle>{aboutData.title}</AppTitle>
           <AppSubtitle>{aboutData.subtitle}</AppSubtitle>
+
           <div className="flex gap-2">
-            <a
-              rel="noopener noreferrer"
-              href={aboutData.cv}
-              target="_blank"
-              className="px-4 py-2 bg-blue-950 text-teal-300 text-sm rounded-lg flex gap-2 items-center justify-center hover:text-teal-400 transition-colors">
+            <AppLinkButton rel="noopener noreferrer" target="_blank" href={aboutData.cv} primary>
               <span>View CV</span>
               <div className="w-4 h-4">
                 <svg
@@ -52,24 +49,7 @@ const About: React.FC = async () => {
                   <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
                 </svg>
               </div>
-            </a>
-            <Link
-              href={aboutData.contactSlug}
-              className="px-4 py-2 bg-blue-950 text-teal-300 text-sm rounded-lg flex gap-2 items-center justify-center hover:text-teal-400 transition-colors">
-              <span>Contact me</span>
-              <div className="w-4 h-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24">
-                  <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                </svg>
-              </div>
-            </Link>
+            </AppLinkButton>
           </div>
           <AppSocials socials={aboutData} />
         </section>

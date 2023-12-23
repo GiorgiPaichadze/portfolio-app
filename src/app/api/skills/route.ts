@@ -6,22 +6,6 @@ type SkillList = {
   id: string;
 };
 
-export const GET = async (req: NextRequest, res: NextResponse) => {
-  try {
-    const skillsData = await prisma.skillList.findMany({
-      include: {
-        frontend: true,
-        backend: true,
-        other: true,
-      },
-    });
-    return new NextResponse(JSON.stringify(skillsData[0]), { status: 200 });
-  } catch (err) {
-    console.error(err);
-    return new NextResponse(JSON.stringify({ message: 'Something went wrong!' }), { status: 500 });
-  }
-};
-
 const createSkill = async (
   category: 'frontend' | 'backend' | 'other',
   skills: string[],
@@ -71,5 +55,21 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         status: 500,
       });
     }
+  }
+};
+
+export const GET = async (req: NextRequest, res: NextResponse) => {
+  try {
+    const skillsData = await prisma.skillList.findMany({
+      include: {
+        frontend: true,
+        backend: true,
+        other: true,
+      },
+    });
+    return new NextResponse(JSON.stringify(skillsData[0]), { status: 200 });
+  } catch (err) {
+    console.error(err);
+    return new NextResponse(JSON.stringify({ message: 'Something went wrong!' }), { status: 500 });
   }
 };

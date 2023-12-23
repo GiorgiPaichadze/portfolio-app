@@ -1,10 +1,15 @@
-import { ExperienceCardProps } from '@/types/types';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import AppHighlightedTitle from './AppHighlightedTitle';
+import { ExperienceItem } from '@/types/types';
+import { http } from '@/services/http';
 
-const AppExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
+interface AppExperienceCardProps {
+  item: ExperienceItem;
+}
+
+const AppExperienceCard: React.FC<AppExperienceCardProps> = ({ item }) => {
   return (
     <Link
       href={item.url}

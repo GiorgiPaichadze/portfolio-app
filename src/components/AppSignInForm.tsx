@@ -6,11 +6,16 @@ import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import AppLoader from './AppLoader';
+import { useLoadState } from '@/hooks/useLoadState';
+import AppInputField from './AppInputField';
+import AppButton from './AppButton';
 
 const AppSignInForm: React.FC = () => {
   const router = useRouter();
 
   const { status } = useSession();
+
+  const { wrapLoad, isLoading } = useLoadState();
 
   const {
     register,
@@ -21,15 +26,16 @@ const AppSignInForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<SignInProps> = async (data) => {
-    const signInData = await signIn('credentials', {
-      email: data.email,
-      password: data.password,
-      redirect: false,
+    await wrapLoad(async () => {
+      const signInData = await signIn('credentials', {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+      if (signInData?.ok) {
+        router.push('/');
+      }
     });
-
-    if (signInData?.ok) {
-      router.push('/');
-    }
   };
 
   if (status === 'loading') {
@@ -41,32 +47,20 @@ const AppSignInForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 items-start ">
-      <div className="w-full flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="email"
-          {...register('email')}
-          className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
-        />
-        {errors.email && <span className="text-red-500">{errors.email.message}</span>}
-      </div>
-      <div className="w-full flex flex-col gap-4">
-        <input
-          type="password"
-          placeholder="password"
-          {...register('password')}
-          className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize"
-        />
-        {errors.password && <span className="text-red-500">{errors.password.message}</span>}
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10 items-start ">
+      <AppInputField placeholder="email" name="email" register={register}>
+        {errors.email && <span className="text-red-500 capitalize">{errors.email.message}</span>}
+      </AppInputField>
+      <AppInputField placeholder="password" name="password" type="password" register={register}>
+        {errors.password && (
+          <span className="text-red-500 capitalize">{errors.password.message}</span>
+        )}
+      </AppInputField>
 
       <div className="w-full flex items-center justify-center">
-        <button
-          type="submit"
-          className="px-8 py-4 bg-blue-950 text-teal-300 text-sm rounded-lg flex gap-4 items-center justify-center hover:text-teal-400 transition-colors">
+        <AppButton primary disabled={isLoading}>
           <span>Sign In</span>
-        </button>
+        </AppButton>
       </div>
     </form>
   );

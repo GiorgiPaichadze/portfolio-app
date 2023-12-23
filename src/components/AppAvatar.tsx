@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import Link from 'next/link';
-import { drawerData } from '@/assets/data/data';
+import { menuData } from '@/assets/data/data';
 import { signOut } from 'next-auth/react';
 
 const AppAvatar: React.FC = () => {
@@ -57,10 +57,10 @@ const AppAvatar: React.FC = () => {
           </div>
           <div className=" overflow-auto text-black h-full">
             <ul className="flex flex-col gap-4 py-10">
-              {drawerData.map((item) => (
+              {menuData.map((item) => (
                 <li key={item.id}>
                   <Link
-                    href={item.url}
+                    href={`/manage${item.url}`}
                     className=" capitalize text-lg text-blue-950"
                     onClick={onClose}>
                     {item.title}

@@ -1,5 +1,4 @@
 import { SocialProps } from '@/types/types';
-import Link from 'next/link';
 
 const AppSocials: React.FC<SocialProps> = ({ socials }) => {
   if (!socials) return null;
@@ -20,6 +19,24 @@ const AppSocials: React.FC<SocialProps> = ({ socials }) => {
             viewBox="0 0 24 24">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
             <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+      </li>
+      <li className="w-6 h-6">
+        <a
+          href={`mailto:${socials.email}`}
+          target="_blank"
+          className="text-slate-300 hover:text-teal-300 transition-colors">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <path d="m22 6-10 7L2 6" />
           </svg>
         </a>
       </li>

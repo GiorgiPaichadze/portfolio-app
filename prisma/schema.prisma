@@ -18,24 +18,15 @@ model User {
   posts    Post[]
 }
 
-model Post {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  img     String?
-  title   String
-  content String
-  userId  String  @db.ObjectId
-  user    User    @relation(fields: [userId], references: [id])
-}
-
 model About {
   id               String @id @default(auto()) @map("_id") @db.ObjectId
   highlightedTitle String
   title            String
   subtitle         String
   cv               String
-  contactSlug      String
   linkedIn         String
   github           String
+  email            String
 }
 
 model SkillList {
@@ -76,4 +67,24 @@ model Experience {
   date     String
   desc     String
   stack    String
+}
+
+model Projects {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  image String
+  title String
+  url   String
+  desc  String
+  stack String
+}
+
+model Post {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  slug  String
+  image String
+  title String
+  text  String
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String? @db.ObjectId
 }

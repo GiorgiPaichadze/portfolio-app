@@ -2,11 +2,25 @@ import AppContainer from '@/components/AppContainer';
 import LottieAnimation from '@/components/LottieAnimation';
 import projects from '@/assets/data/lottiefiles/projects.json';
 import Image from 'next/image';
-import { projectsData } from '@/assets/data/data';
 import Link from 'next/link';
 import AppSectionRow from '@/components/AppSectionRow';
+import { http } from '@/services/http';
+import { ProjectsItem } from '@/types/types';
 
-const Projects: React.FC = () => {
+const getData = async () => {
+  try {
+    const data = await http('/api/projects', 'GET');
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+const Projects: React.FC = async () => {
+  const projectsData: ProjectsItem[] | [] = await getData();
+
+  if (!projectsData) return null;
+
   return (
     <AppSectionRow>
       <AppContainer>
@@ -37,11 +51,11 @@ const Projects: React.FC = () => {
                       <h4 className="text-lg text-teal-300">{item.title}</h4>
                       <div className="text-sm">{item.desc}</div>
                       <ul className="flex gap-2 flex-wrap">
-                        {item.stack.map((item) => (
+                        {item.stack.split(',').map((item, index) => (
                           <li
-                            key={item.id}
+                            key={index}
                             className="text-xs py-1 px-2 whitespace-nowrap bg-blue-950 text-teal-300 rounded">
-                            {item.title}
+                            {item}
                           </li>
                         ))}
                       </ul>

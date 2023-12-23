@@ -3,10 +3,24 @@ import blog from '@/assets/data/lottiefiles/blog.json';
 import LottieAnimation from '@/components/LottieAnimation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { blogData } from '@/assets/data/data';
 import AppSectionRow from '@/components/AppSectionRow';
+import { http } from '@/services/http';
+import { PostFormProps } from '@/types/types';
 
-const Blog: React.FC = () => {
+const getData = async () => {
+  try {
+    const data = await http('/api/blog', 'GET');
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+const Blog: React.FC = async () => {
+  const blogData: PostFormProps[] | [] = await getData();
+
+  if (!blogData) return null;
+
   return (
     <AppSectionRow>
       <AppContainer>
@@ -19,7 +33,7 @@ const Blog: React.FC = () => {
               <div className="flex flex-col gap-6">
                 {blogData.map((item) => (
                   <Link
-                    href={`blog/${item.url}`}
+                    href={`blog/${item.slug}`}
                     key={item.id}
                     className="flex gap-6 p-5 rounded-md hover:bg-slate-800/50
                     hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] transition-shadow">
@@ -29,7 +43,7 @@ const Blog: React.FC = () => {
                         alt=""
                         width={120}
                         height={120}
-                        className="rounded-md min-w-[120px]"
+                        className="rounded-md min-w-[120px] max-h-[90px]"
                       />
                     </div>
                     <div className="flex flex-col gap-3">

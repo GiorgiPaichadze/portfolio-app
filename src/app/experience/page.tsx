@@ -1,11 +1,25 @@
 import AppContainer from '@/components/AppContainer';
 import experience from '@/assets/data/lottiefiles/experience.json';
 import LottieAnimation from '@/components/LottieAnimation';
-import { experienceData } from '@/assets/data/data';
 import AppExperienceCard from '@/components/AppExperienceCard';
 import AppSectionRow from '@/components/AppSectionRow';
+import { http } from '@/services/http';
+import { ExperienceItem } from '@/types/types';
 
-const Experience: React.FC = () => {
+const getData = async () => {
+  try {
+    const data = await http('/api/experience', 'GET');
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+const Experience: React.FC = async () => {
+  const experienceData: ExperienceItem[] | [] = await getData();
+
+  if (!experienceData) return null;
+
   return (
     <AppSectionRow>
       <AppContainer>
