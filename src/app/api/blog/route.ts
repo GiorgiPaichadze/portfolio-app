@@ -29,8 +29,10 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         );
       }
 
+      const sanitizedSlug = body.title.replace(/[^a-zA-Z0-9]/g, '');
+
       const postData = await prisma.post.create({
-        data: { slug: body.title, ...body },
+        data: { slug: sanitizedSlug, ...body },
       });
 
       return new NextResponse(JSON.stringify(postData), { status: 201 });

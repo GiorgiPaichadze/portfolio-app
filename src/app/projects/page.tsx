@@ -38,14 +38,8 @@ const Projects: React.FC = async () => {
                     key={item.id}
                     className="flex gap-6 p-5 rounded-md hover:bg-slate-800/50
                     hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] transition-shadow">
-                    <div>
-                      <Image
-                        src={item.image}
-                        alt=""
-                        width={120}
-                        height={120}
-                        className="rounded-md min-w-[120px]"
-                      />
+                    <div className="flex items-center justify-center min-w-[48px] h-12  bg-white p-2 rounded-md">
+                      <Image src={item?.image} alt="" width={24} height={24} />
                     </div>
                     <div className="flex flex-col gap-3">
                       <h4 className="text-lg text-teal-300">{item.title}</h4>
