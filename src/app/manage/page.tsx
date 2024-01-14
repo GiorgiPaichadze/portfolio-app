@@ -35,8 +35,6 @@ const ManageAbout: React.FC = () => {
   };
 
   const onSubmit: SubmitHandler<AboutFormProps> = async (data) => {
-    console.log(data);
-
     try {
       await http('/api/about', 'POST', data);
       await getData();

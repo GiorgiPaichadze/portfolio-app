@@ -44,7 +44,6 @@ const AppImageField = forwardRef<HTMLInputElement, AppImageFieldProps>(function 
       }
 
       const imgData: { url: string } = await response.json();
-      console.log(imgData);
 
       setValue(name, imgData.url);
     } catch (error) {

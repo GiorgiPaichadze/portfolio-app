@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -20,6 +20,7 @@
     "lottie-react": "^2.4.0",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
+    "next13-progressbar": "^1.1.3",
     "prisma": "^5.7.0",
     "react": "^18",
     "react-dom": "^18",
