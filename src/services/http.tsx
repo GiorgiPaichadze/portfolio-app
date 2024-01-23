@@ -9,7 +9,7 @@ export const http = async (endpoint: string, method = 'GET', body?: any) => {
       ...(body ? { 'Content-Type': 'application/json' } : {}),
     },
     body: body ? JSON.stringify(body) : undefined,
-    cache: 'no-store' as RequestCache,
+    // cache: 'no-store' as RequestCache,
   };
 
   try {
