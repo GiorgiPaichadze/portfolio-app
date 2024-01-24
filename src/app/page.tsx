@@ -2,11 +2,10 @@ import AppContainer from '@/components/AppContainer';
 import AppSocials from '@/components/AppSocials';
 import AppSubtitle from '@/components/AppSubtitle';
 import AppTitle from '@/components/AppTitle';
-import mountains from '@/assets/data/lottiefiles/mountains.json';
-import LottieAnimationBackground from '@/components/LottieAnimationBackground';
 import AppHighlightedTitle from '@/components/AppHighlightedTitle';
 import { http } from '@/services/http';
 import AppLinkButton from '@/components/AppLinkButton';
+import AppIllustration from '@/components/AppIllustration';
 
 const getData = async () => {
   try {
@@ -23,17 +22,13 @@ const About: React.FC = async () => {
   if (!aboutData) return null;
 
   return (
-    <main className="h-[calc(100vh-6rem)] relative">
-      <div className="absolute -z-10 bottom-0 left-0 right-0 hidden md:block">
-        <LottieAnimationBackground item={mountains} />
-      </div>
+    <main className="h-[calc(100vh-6rem)]">
       <AppContainer>
-        <section className="h-full md:w-7/12 pt-12 md:pt-24 flex flex-col gap-5">
-          <AppHighlightedTitle>{aboutData.highlightedTitle}</AppHighlightedTitle>
-          <AppTitle>{aboutData.title}</AppTitle>
-          <AppSubtitle>{aboutData.subtitle}</AppSubtitle>
-
-          <div className="flex gap-2">
+        <div className="flex items-center justify-between h-full gap-6">
+          <div className="max-w-xl flex flex-col gap-6 md:gap-6">
+            <AppHighlightedTitle>{aboutData.highlightedTitle}</AppHighlightedTitle>
+            <AppTitle>{aboutData.title}</AppTitle>
+            <AppSubtitle>{aboutData.subtitle}</AppSubtitle>
             <AppLinkButton rel="noopener noreferrer" target="_blank" href={aboutData.cv} primary>
               <span>View CV</span>
               <div className="w-4 h-4">
@@ -50,9 +45,13 @@ const About: React.FC = async () => {
                 </svg>
               </div>
             </AppLinkButton>
+            <AppSocials socials={aboutData} />
           </div>
-          <AppSocials socials={aboutData} />
-        </section>
+
+          <div className="hidden md:flex items-center justify-center">
+            <AppIllustration srcPath={'/images/retro-computer.svg'} />
+          </div>
+        </div>
       </AppContainer>
     </main>
   );

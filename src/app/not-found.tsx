@@ -1,6 +1,5 @@
-import notFound from '@/assets/data/lottiefiles/not-found.json';
-import LottieAnimationBackground from '@/components/LottieAnimationBackground';
 import AppLinkButton from '@/components/AppLinkButton';
+import AppIllustration from '@/components/AppIllustration';
 
 const NotFound: React.FC = () => {
   return (
@@ -8,8 +7,8 @@ const NotFound: React.FC = () => {
       <AppLinkButton href={'/'} primary>
         Back
       </AppLinkButton>
-      <div className="w-[600px] h-[500px] hidden md:block">
-        <LottieAnimationBackground item={notFound} />
+      <div className="hidden md:flex items-center justify-center">
+        <AppIllustration srcPath={'/images/not-found.svg'} />
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
 import AppContainer from '@/components/AppContainer';
-import experience from '@/assets/data/lottiefiles/experience.json';
-import LottieAnimation from '@/components/LottieAnimation';
 import AppExperienceCard from '@/components/AppExperienceCard';
 import AppSectionRow from '@/components/AppSectionRow';
 import { http } from '@/services/http';
 import { ExperienceItem } from '@/types/types';
+import AppIllustration from '@/components/AppIllustration';
 
 const getData = async () => {
   try {
@@ -25,8 +24,8 @@ const Experience: React.FC = async () => {
       <AppContainer>
         <div className="flex flex-col gap-16">
           <div className="flex">
-            <div className="flex-1 hidden md:block">
-              <LottieAnimation item={experience} />
+            <div className="flex-1 hidden md:flex justify-center">
+              <AppIllustration srcPath={'/images/experience.svg'} />
             </div>
             <div className="flex-1 flex flex-col gap-8">
               {experienceData.map((item) => (

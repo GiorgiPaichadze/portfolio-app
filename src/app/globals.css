@@ -16,3 +16,16 @@ body {
   background-color: #5eead4;
   color: rgb(var(--background-rgb));
 }
+
+.illustration {
+  animation: move 2s infinite ease alternate;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}

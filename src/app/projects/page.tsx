@@ -1,11 +1,10 @@
 import AppContainer from '@/components/AppContainer';
-import LottieAnimation from '@/components/LottieAnimation';
-import projects from '@/assets/data/lottiefiles/projects.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import AppSectionRow from '@/components/AppSectionRow';
 import { http } from '@/services/http';
 import { ProjectsItem } from '@/types/types';
+import AppIllustration from '@/components/AppIllustration';
 
 const getData = async () => {
   try {
@@ -26,8 +25,8 @@ const Projects: React.FC = async () => {
       <AppContainer>
         <div className="flex flex-col gap-16">
           <div className="flex">
-            <div className="flex-1 hidden md:block">
-              <LottieAnimation item={projects} />
+            <div className="flex-1 hidden md:flex justify-center">
+              <AppIllustration srcPath={'/images/projects.svg'} />
             </div>
             <div className="flex-1">
               <div className="flex flex-col gap-6">

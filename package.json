@@ -17,7 +17,6 @@
     "@prisma/client": "^5.7.0",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
-    "lottie-react": "^2.4.0",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
     "next13-progressbar": "^1.1.3",

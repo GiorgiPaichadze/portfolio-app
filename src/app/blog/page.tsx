@@ -1,11 +1,10 @@
 import AppContainer from '@/components/AppContainer';
-import blog from '@/assets/data/lottiefiles/blog.json';
-import LottieAnimation from '@/components/LottieAnimation';
 import Link from 'next/link';
 import Image from 'next/image';
 import AppSectionRow from '@/components/AppSectionRow';
 import { http } from '@/services/http';
 import { PostFormProps } from '@/types/types';
+import AppIllustration from '@/components/AppIllustration';
 
 const getData = async () => {
   try {
@@ -26,8 +25,8 @@ const Blog: React.FC = async () => {
       <AppContainer>
         <div className="flex flex-col gap-16">
           <div className="flex">
-            <div className="flex-1 hidden md:block">
-              <LottieAnimation item={blog} />
+            <div className="flex-1 hidden md:flex justify-center">
+              <AppIllustration srcPath={'/images/blog.svg'} />
             </div>
             <div className="flex-1">
               <div className="flex flex-col gap-6">

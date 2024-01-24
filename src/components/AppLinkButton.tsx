@@ -32,7 +32,7 @@ const AppLinkButton: React.FC<AppLinkButtonProps> = ({
         success ? 'bg-green-500 text-black' : ''
       } ${danger ? 'bg-red-500 text-black' : ''} ${
         warning ? 'bg-yellow-500 text-black' : ''
-      } text-sm rounded-lg flex items-center justify-center gap-2`}>
+      } text-sm rounded-lg inline-flex items-center justify-center gap-2 w-fit`}>
       {children}
     </Link>
   );

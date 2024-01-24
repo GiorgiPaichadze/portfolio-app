@@ -1,11 +1,8 @@
 import AppContainer from '@/components/AppContainer';
-import LottieAnimation from '@/components/LottieAnimation';
-import frontend from '@/assets/data/lottiefiles/frontend.json';
-import backend from '@/assets/data/lottiefiles/backend.json';
-import other from '@/assets/data/lottiefiles/other.json';
 import AppHighlightedTitle from '@/components/AppHighlightedTitle';
 import AppSectionRow from '@/components/AppSectionRow';
 import { http } from '@/services/http';
+import AppIllustration from '@/components/AppIllustration';
 
 const getData = async () => {
   try {
@@ -25,9 +22,9 @@ const Skills: React.FC = async () => {
     <AppSectionRow>
       <AppContainer>
         <div className="flex flex-col gap-16">
-          <div className="flex">
-            <div className="flex-1 hidden md:block">
-              <LottieAnimation item={frontend} />
+          <div className="flex justify-center">
+            <div className="flex-1 hidden md:flex justify-center">
+              <AppIllustration srcPath={'/images/frontend.svg'} />
             </div>
             <div className="flex-1 flex flex-col gap-10 md:items-center md:justify-center pl-6 md:pl-0">
               <div className="flex flex-col gap-4">
@@ -45,8 +42,8 @@ const Skills: React.FC = async () => {
             </div>
           </div>
           <div className="flex flex-row-reverse">
-            <div className="flex-1 hidden md:block">
-              <LottieAnimation item={backend} />
+            <div className="flex-1 hidden md:flex justify-center">
+              <AppIllustration srcPath={'/images/backend.svg'} />
             </div>
             <div className="flex-1 flex flex-col gap-10  md:items-center md:justify-center pl-6 md:pl-0">
               <div className="flex flex-col gap-4">
@@ -64,8 +61,8 @@ const Skills: React.FC = async () => {
             </div>
           </div>
           <div className="flex">
-            <div className="flex-1 hidden md:block">
-              <LottieAnimation item={other} />
+            <div className="flex-1 hidden md:flex justify-center">
+              <AppIllustration srcPath={'/images/other-skills.svg'} />
             </div>
             <div className="flex-1 flex flex-col gap-10 md:items-center md:justify-center pl-6 md:pl-0">
               <div className="flex flex-col gap-4">
