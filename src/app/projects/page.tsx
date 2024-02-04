@@ -43,15 +43,18 @@ const Projects: React.FC = async () => {
                     <div className="flex flex-col gap-3">
                       <h4 className="text-lg text-teal-300">{item.title}</h4>
                       <div className="text-sm">{item.desc}</div>
-                      <ul className="flex gap-2 flex-wrap">
-                        {item.stack.split(',').map((item, index) => (
-                          <li
-                            key={index}
-                            className="text-xs py-1 px-2 whitespace-nowrap bg-blue-950 text-teal-300 rounded">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+
+                      {item.stack && (
+                        <ul className="flex gap-2 flex-wrap">
+                          {item.stack.split(',').map((item, index) => (
+                            <li
+                              key={index}
+                              className="text-xs py-1 px-2 whitespace-nowrap bg-blue-950 text-teal-300 rounded">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </Link>
                 ))}

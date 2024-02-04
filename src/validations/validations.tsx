@@ -35,7 +35,7 @@ export const projectsFormSchema = z.object({
   title: z.string().min(3, 'title field is required'),
   url: z.string(),
   desc: z.string().min(3, 'desc field is required'),
-  stack: z.string().min(3, 'stack field is required'),
+  stack: z.optional(z.any()),
   orderId: z.optional(z.any()),
 });
 
