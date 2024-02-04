@@ -19,8 +19,17 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         );
       }
 
+      const latestProject = await prisma.projects.findFirst({
+        orderBy: { orderId: 'desc' },
+      });
+
+      const nextOrderId = latestProject ? latestProject.orderId + 1 : 1;
+
       const projectsData = await prisma.projects.create({
-        data: body,
+        data: {
+          ...body,
+          orderId: nextOrderId,
+        },
       });
 
       return new NextResponse(JSON.stringify(projectsData), { status: 201 });
@@ -35,7 +44,9 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
-    const projectsData = await prisma.projects.findMany();
+    const projectsData = await prisma.projects.findMany({
+      orderBy: { orderId: 'asc' },
+    });
     return new NextResponse(JSON.stringify(projectsData), { status: 200 });
   } catch (err) {
     console.error(err);

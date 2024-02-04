@@ -22,7 +22,7 @@ export const skillsFormSchema = z.object({
 export const experienceFormSchema = z.object({
   image: z.string().min(3, 'image field is required'),
   name: z.string().min(3, 'name field is required'),
-  url: z.string().min(3, 'url field is required'),
+  url: z.string(),
   location: z.string().min(3, 'location field is required'),
   position: z.string().min(3, 'position field is required'),
   date: z.string().min(3, 'date field is required'),
@@ -31,11 +31,12 @@ export const experienceFormSchema = z.object({
 });
 
 export const projectsFormSchema = z.object({
-  image: z.string().min(3, 'image field is required'),
+  image: z.optional(z.any()),
   title: z.string().min(3, 'title field is required'),
-  url: z.string().min(3, 'url field is required'),
+  url: z.string(),
   desc: z.string().min(3, 'desc field is required'),
   stack: z.string().min(3, 'stack field is required'),
+  orderId: z.optional(z.any()),
 });
 
 export const postFormSchema = z.object({

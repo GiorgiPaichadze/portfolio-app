@@ -51,6 +51,9 @@ export interface ProjectsItem {
   url: string;
   desc: string;
   stack: string;
+  orderId: number;
+  dragFirst: number;
+  dragSecond: number;
 }
 
 export interface PostFormProps {

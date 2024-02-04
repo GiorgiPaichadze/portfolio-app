@@ -63,6 +63,7 @@ const AppImageField = forwardRef<HTMLInputElement, AppImageFieldProps>(function 
         onChange={handleChangeFile}
         {...props}
         hidden
+        defaultValue={''}
       />
       <label htmlFor="file-field" className="cursor-pointer">
         Image

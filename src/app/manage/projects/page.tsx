@@ -11,7 +11,7 @@ import { http } from '@/services/http';
 import { ProjectsItem } from '@/types/types';
 import { projectsFormSchema } from '@/validations/validations';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 const ManageProjects: React.FC = () => {
@@ -22,6 +22,9 @@ const ManageProjects: React.FC = () => {
 
   const { wrapLoad, isLoading } = useLoadState();
 
+  const dragFirst = useRef<number>(0);
+  const dragSecond = useRef<number>(0);
+
   const {
     register,
     handleSubmit,
@@ -30,7 +33,9 @@ const ManageProjects: React.FC = () => {
     formState: { errors },
   } = useForm<ProjectsItem>({
     resolver: zodResolver(projectsFormSchema),
-    defaultValues: {},
+    defaultValues: {
+      image: '',
+    },
   });
 
   const getData = async () => {
@@ -53,7 +58,6 @@ const ManageProjects: React.FC = () => {
         setIsEditable(false);
         setEditableItemId(null);
         getData();
-
         reset({
           image: '',
           title: '',
@@ -78,6 +82,7 @@ const ManageProjects: React.FC = () => {
   const updateData = async (id: any, data: ProjectsItem) => {
     try {
       await http(`/api/projects/${id}`, 'PATCH', data);
+      getData();
     } catch (error) {
       console.error('Error updating data:', error);
     }
@@ -144,6 +149,17 @@ const ManageProjects: React.FC = () => {
             <ul className="flex flex-col gap-4 my-4">
               {experienceData?.map((item) => (
                 <li
+                  draggable
+                  onDragStart={() => (dragFirst.current = item.orderId)}
+                  onDragEnter={() => (dragSecond.current = item.orderId)}
+                  onDragEnd={() =>
+                    updateData(item.id, {
+                      ...item,
+                      dragFirst: dragFirst.current,
+                      dragSecond: dragSecond.current,
+                    })
+                  }
+                  onDragOver={(e) => e.preventDefault()}
                   key={item.id}
                   className="w-full flex items-center gap-4 relative px-4 py-2 h-12 bg-white rounded">
                   <span className="text-black flex-1">{item.title}</span>
