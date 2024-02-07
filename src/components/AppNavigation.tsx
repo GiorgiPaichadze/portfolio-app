@@ -19,8 +19,7 @@ const AppNavigation: React.FC = () => {
               href={item.url}
               className={`uppercase text-xs text-slate-200 font-bold p-1 lg:p-2 relative transition-opacity hover:opacity-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-slate-200 after:scale-0 hover:after:scale-100 after:transition-transform ${
                 pathname === item.url ? 'opacity-100 after:scale-100' : 'opacity-60'
-              }`}
-              shallow={true}>
+              }`}>
               {item.title}
             </Link>
           </li>

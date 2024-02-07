@@ -16,8 +16,7 @@ const AppMobileMenu: React.FC<{
               <Link
                 href={item.url}
                 className="capitalize text-2xl"
-                onClick={() => setActiveMobileMenu(false)}
-                shallow={true}>
+                onClick={() => setActiveMobileMenu(false)}>
                 {item.title}
               </Link>
             </li>
