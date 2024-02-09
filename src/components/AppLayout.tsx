@@ -1,10 +1,10 @@
 import AppHeader from './AppHeader';
-// import LightCursor from './LightCursor';
+import LightCursor from './LightCursor';
 
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
-      {/* <LightCursor /> */}
+      <LightCursor />
       <AppHeader />
       <div>{children}</div>
     </>

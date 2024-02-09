@@ -60,14 +60,19 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
-    const skillsData = await prisma.skillList.findMany({
-      include: {
-        frontend: true,
-        backend: true,
-        other: true,
-      },
-    });
-    return new NextResponse(JSON.stringify(skillsData[0]), { status: 200 });
+    const [frontendSkills, backendSkills, otherSkills] = await Promise.all([
+      prisma.skillItemFrontend.findMany(),
+      prisma.skillItemBackend.findMany(),
+      prisma.skillItemOther.findMany(),
+    ]);
+
+    const skillsData = {
+      frontend: frontendSkills,
+      backend: backendSkills,
+      other: otherSkills,
+    };
+
+    return new NextResponse(JSON.stringify(skillsData), { status: 200 });
   } catch (err) {
     console.error(err);
     return new NextResponse(JSON.stringify({ message: 'Something went wrong!' }), { status: 500 });
