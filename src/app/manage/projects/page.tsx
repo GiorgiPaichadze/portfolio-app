@@ -14,11 +14,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+interface Projects {
+  skillList: ProjectsItem[];
+  totalCount?: number;
+}
+
 const ManageProjects: React.FC = () => {
-  const [experienceData, setExperienceData] = useState<ProjectsItem[]>([]);
+  const [projectsData, setProjectsData] = useState<Projects>();
 
   const [isEditable, setIsEditable] = useState(false);
   const [editableItemId, setEditableItemId] = useState(null);
+
+  const ProjectsRef = useRef<HTMLSelectElement | null>(null);
 
   const { wrapLoad, isLoading } = useLoadState();
 
@@ -40,8 +47,8 @@ const ManageProjects: React.FC = () => {
 
   const getData = async () => {
     try {
-      const data = await http('/api/projects', 'GET');
-      setExperienceData(data);
+      const data = await http(`/api/projects/${ProjectsRef.current?.value}`, 'GET');
+      setProjectsData(data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -73,7 +80,7 @@ const ManageProjects: React.FC = () => {
 
   const addData = async (data: ProjectsItem) => {
     try {
-      await http('/api/projects', 'POST', data);
+      await http('/api/projects', 'POST', { category: ProjectsRef.current?.value, ...data });
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -81,7 +88,7 @@ const ManageProjects: React.FC = () => {
 
   const updateData = async (id: any, data: ProjectsItem) => {
     try {
-      await http(`/api/projects/${id}`, 'PATCH', data);
+      await http(`/api/projects/${ProjectsRef.current?.value}?id=${id}`, 'PATCH', data);
       getData();
     } catch (error) {
       console.error('Error updating data:', error);
@@ -90,7 +97,7 @@ const ManageProjects: React.FC = () => {
 
   const deleteData = async (id: any) => {
     try {
-      await http(`/api/projects/${id}`, 'DELETE');
+      await http(`/api/projects/${ProjectsRef.current?.value}?id=${id}`, 'DELETE');
       getData();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -112,6 +119,31 @@ const ManageProjects: React.FC = () => {
       <AppContainer>
         <div className="mx-auto max-w-[468px]">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10 items-end">
+            <div className="w-full flex flex-col gap-4 mb-10">
+              <label>Select Category</label>
+              <select
+                onChange={() => {
+                  setIsEditable(false);
+                  setEditableItemId(null);
+                  reset({
+                    image: '',
+                    title: '',
+                    url: '',
+                    desc: '',
+                    stack: '',
+                  });
+                  getData();
+                }}
+                ref={ProjectsRef}
+                className="w-full px-4 py-2 h-12 focus:outline-none rounded-md text-blue-950 placeholder:text-blue-950 placeholder:capitalize cursor-pointer"
+                defaultValue="work_projects">
+                <option value="" disabled>
+                  Select an category
+                </option>
+                <option value="work_projects">work projects</option>
+                <option value="my_projects">my projects</option>
+              </select>
+            </div>
             <AppImageField name="image" register={register} setValue={setValue}>
               {errors.image && (
                 <span className="text-red-500 capitalize">{errors.image.message}</span>
@@ -145,9 +177,9 @@ const ManageProjects: React.FC = () => {
             </AppButton>
           </form>
 
-          {experienceData && (
+          {projectsData?.skillList && (
             <ul className="flex flex-col gap-4 my-4">
-              {experienceData?.map((item) => (
+              {projectsData?.skillList.map((item) => (
                 <li
                   draggable
                   onDragStart={() => (dragFirst.current = item.orderId)}

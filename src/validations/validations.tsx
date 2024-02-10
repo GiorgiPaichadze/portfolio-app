@@ -37,6 +37,7 @@ export const projectsFormSchema = z.object({
   desc: z.string().min(3, 'desc field is required'),
   stack: z.optional(z.any()),
   orderId: z.optional(z.any()),
+  category: z.optional(z.any()),
 });
 
 export const postFormSchema = z.object({

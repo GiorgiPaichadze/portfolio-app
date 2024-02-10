@@ -25,10 +25,7 @@ export const GET = async (req: NextRequest, { params }: { params: { category: st
   }
 };
 
-export const PATCH = async (
-  req: NextRequest,
-  { params }: { params: { id: string; category: string } },
-) => {
+export const PATCH = async (req: NextRequest, { params }: { params: { category: string } }) => {
   const { category } = params;
 
   const searchParams = req.nextUrl.searchParams;

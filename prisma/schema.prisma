@@ -69,14 +69,26 @@ model Experience {
   stack    String
 }
 
-model Projects {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  image   String
-  title   String
-  url     String
-  desc    String
-  stack   String
-  orderId Int
+model WorkProjects {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  image    String
+  title    String
+  url      String
+  desc     String
+  stack    String
+  orderId  Int
+  category String
+}
+
+model MyProjects {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  image    String
+  title    String
+  url      String
+  desc     String
+  stack    String
+  orderId  Int
+  category String
 }
 
 model Post {
